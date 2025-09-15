@@ -43,6 +43,6 @@ jobs:
          #Deploy to tomcat
         - name: Deploy to tomcat
           run: |
-                 curl -v -u ${{ secrets.TOMCAT_USER }}:${{ secrets.TOMCAT_PASSWORD }} \
-                  -T target/TrainBook-1.0.0-SNAPSHOT.war \
-                  "http://${{ secrets.TOMCAT_HOST }}:8080/manager/text/deploy?path=/TrainBook&update=true"
+               curl -v -u deploy:deployer \
+               -T target/TrainBook-1.0.0-SNAPSHOT.war \
+               "http://ec2-18-221-138-47.us-east-2.compute.amazonaws.com:8080/manager/text/deploy?path=/TrainBook&update=true"
