@@ -28,5 +28,5 @@ jobs:
           FILE=$(ls target/*.war | head -n 1)
           echo "Deploying $FILE ..."
           curl -v -u ${{ secrets.TOMCAT_USER }}:${{ secrets.TOMCAT_PASSWORD }} \
-            -T $FILE \
+            -T "$FILE" \
             "http://${{ secrets.TOMCAT_HOST }}:8080/manager/text/deploy?path=/TrainBook&update=true"
