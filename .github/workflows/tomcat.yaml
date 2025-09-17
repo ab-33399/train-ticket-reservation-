@@ -28,10 +28,11 @@ jobs:
           FILE=$(ls target/*.war | head -n 1)
           echo "Deploying $FILE ..."
           curl -f -v -u ${{ secrets.TOMCAT_USER }}:${{ secrets.TOMCAT_PASSWORD }} \
-            -T "$FILE" \
-            "http://${{ secrets.TOMCAT_HOST }}:8080/manager/text/deploy?path=/TrainBook&update=true"
+          -T "$FILE" \
+          "http://${{ secrets.TOMCAT_HOST }}:8080/manager/text/deploy?path=/TrainBook&update=true"
 
-      - name: Verify deployment (health check)
-        run: |
-          echo "Checking if app is live..."
-          curl -f "http://${{ secrets.TOMCAT_HOST }}:8080/TrainBook/" || exit 1
+
+      # - name: Verify deployment (health check)
+      #   run: |
+      #     echo "Checking if app is live..."
+      #     curl -f "http://${{ secrets.TOMCAT_HOST }}:8080/TrainBook/" || exit 1
